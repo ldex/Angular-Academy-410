@@ -1,16 +1,24 @@
 import { Component } from '@angular/core';
 import { Product } from '../../models/product.interface';
+import { CurrencyPipe, UpperCasePipe } from '@angular/common';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe, UpperCasePipe, ProductDetailComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent {
 
   title: string = 'Products'
+
+  selectedProduct: Product
+
+  onSelect(product: Product) {
+    this.selectedProduct = product
+  }
 
   products: Product[] = [
     {

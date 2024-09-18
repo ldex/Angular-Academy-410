@@ -4,10 +4,14 @@
 
 <ul class="products">
     @for (product of products; track product.id) {
-        <li [class.discontinued]="product.discontinued">
-            <span class="name">{{ product.name }}</span>
+        <li [class.discontinued]="product.discontinued"
+            [class.selected]="product.id == selectedProduct?.id"
+            (click)="onSelect(product)">
+            <span class="name">{{ product.name | uppercase }}</span>
             <span class="description">{{ product.description }}</span>
-            <span class="price">{{ product.price }}</span>
+            <span class="price">{{ product.price | currency:'CAD':'symbol-narrow':'.2' }}</span>
         </li>
     }
 </ul>
+
+<app-product-detail [product]="selectedProduct"></app-product-detail>
