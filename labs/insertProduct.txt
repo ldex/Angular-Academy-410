@@ -1,0 +1,4 @@
+  insertProduct(newProduct: Product): Observable<Product> {
+    newProduct.modifiedDate = new Date();
+    return this.http.post<Product>(this.baseUrl, newProduct);
+  }
